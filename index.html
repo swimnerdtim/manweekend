@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MAN WEEKEND</title>
+<meta name="robots" content="noindex, nofollow" />
+<meta name="description" content="Classified." />
+<style>
+  :root {
+    --accent: #ff6b1a;
+    --bg: #0a0a0a;
+    --fg: #f5f5f5;
+    --muted: #8a8a8a;
+    --card: #141414;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { min-height: 100%; }
+  body {
+    background: radial-gradient(circle at 50% 10%, #161616 0%, var(--bg) 70%);
+    color: var(--fg);
+    font-family: "Arial Black", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    min-height: 100vh;
+  }
+
+  /* ---------- GATE ---------- */
+  #gate {
+    position: fixed; inset: 0; z-index: 1000;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding: 5vw;
+    background: radial-gradient(circle at 50% 30%, #161616 0%, var(--bg) 70%);
+  }
+  .seal {
+    font-size: clamp(0.65rem, 2vw, 0.9rem);
+    letter-spacing: 0.4em; color: var(--accent);
+    text-transform: uppercase; margin-bottom: 1.5em; font-weight: bold;
+  }
+  .gate-title {
+    font-size: clamp(2.5rem, 11vw, 8rem); font-weight: 900;
+    letter-spacing: 0.05em; line-height: 0.95; text-transform: uppercase;
+    background: linear-gradient(180deg, #fff 0%, var(--accent) 130%);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; margin-bottom: 0.3em;
+  }
+  .gate-sub {
+    font-size: clamp(0.7rem, 2.2vw, 1.1rem); color: var(--muted);
+    letter-spacing: 0.35em; text-transform: uppercase; margin-bottom: 2.5em; font-weight: bold;
+  }
+  .pw-wrap { display: flex; gap: 0.6rem; flex-wrap: wrap; justify-content: center; }
+  #pw {
+    background: var(--card); border: 2px solid #2a2a2a; color: var(--fg);
+    padding: 1rem 1.3rem; font-size: 1.1rem; border-radius: 10px;
+    font-family: inherit; letter-spacing: 0.15em; text-align: center; outline: none;
+    transition: border-color .2s; min-width: 240px;
+  }
+  #pw:focus { border-color: var(--accent); }
+  #enter {
+    background: var(--accent); color: #0a0a0a; border: none;
+    padding: 1rem 2rem; font-size: 1.1rem; font-weight: 900; border-radius: 10px;
+    text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer;
+    font-family: inherit; transition: transform .1s, filter .2s;
+  }
+  #enter:hover { filter: brightness(1.1); }
+  #enter:active { transform: scale(0.97); }
+  #err {
+    color: #ff4444; margin-top: 1.2em; min-height: 1.2em;
+    font-size: 0.9rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: bold;
+  }
+  .shake { animation: shake .4s; }
+  @keyframes shake {
+    0%,100%{transform:translateX(0);} 20%,60%{transform:translateX(-8px);} 40%,80%{transform:translateX(8px);}
+  }
+
+  /* ---------- SITE ---------- */
+  #site { display: none; }
+  header.hero {
+    text-align: center; padding: 8vh 5vw 5vh;
+    border-bottom: 1px solid #1e1e1e;
+  }
+  .hero-title {
+    font-size: clamp(2.2rem, 9vw, 6rem); font-weight: 900;
+    letter-spacing: 0.05em; text-transform: uppercase; line-height: 0.95;
+    background: linear-gradient(180deg, #fff 0%, var(--accent) 130%);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .hero-sub {
+    color: var(--muted); letter-spacing: 0.35em; text-transform: uppercase;
+    margin-top: 1em; font-size: clamp(0.7rem, 2vw, 1rem); font-weight: bold;
+  }
+  nav.years {
+    position: sticky; top: 0; z-index: 50;
+    display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center;
+    padding: 1rem; background: rgba(10,10,10,0.92); backdrop-filter: blur(8px);
+    border-bottom: 1px solid #1e1e1e;
+  }
+  nav.years a {
+    color: var(--muted); text-decoration: none; font-weight: 900;
+    padding: 0.4rem 0.8rem; border-radius: 8px; font-size: 0.95rem;
+    letter-spacing: 0.05em; transition: color .2s, background .2s;
+  }
+  nav.years a:hover { color: var(--accent); background: #161616; }
+
+  section.year { padding: 5vh 5vw; max-width: 1200px; margin: 0 auto; }
+  .year-head {
+    font-size: clamp(2rem, 7vw, 4rem); font-weight: 900; color: var(--accent);
+    letter-spacing: 0.05em; margin-bottom: 0.6em; border-bottom: 2px solid #1e1e1e;
+    padding-bottom: 0.2em;
+  }
+  .block-label {
+    font-size: 0.8rem; color: var(--muted); letter-spacing: 0.25em;
+    text-transform: uppercase; margin: 1.8em 0 1em; font-weight: bold;
+  }
+  .grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(180px,1fr));
+    gap: 0.8rem;
+  }
+  .grid.vids { grid-template-columns: repeat(auto-fill, minmax(320px,1fr)); }
+  .photo {
+    aspect-ratio: 1; overflow: hidden; border-radius: 10px; cursor: pointer;
+    background: var(--card); border: 1px solid #1e1e1e;
+  }
+  .photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .3s; display:block; }
+  .photo:hover img { transform: scale(1.06); }
+  .videobox {
+    border-radius: 10px; overflow: hidden; background: #000;
+    border: 1px solid #1e1e1e; aspect-ratio: 16/9;
+  }
+  .videobox iframe, .videobox video { width: 100%; height: 100%; border: 0; display:block; }
+
+  footer {
+    text-align: center; padding: 6vh 5vw; color: var(--muted);
+    letter-spacing: 0.2em; text-transform: uppercase; font-size: 0.8rem;
+    border-top: 1px solid #1e1e1e; font-weight: bold;
+  }
+
+  /* ---------- LIGHTBOX ---------- */
+  #lb {
+    display: none; position: fixed; inset: 0; z-index: 2000;
+    background: rgba(0,0,0,0.95); align-items: center; justify-content: center;
+    padding: 4vw; cursor: zoom-out;
+  }
+  #lb img { max-width: 100%; max-height: 90vh; border-radius: 8px; }
+  #lb .close {
+    position: fixed; top: 1.2rem; right: 1.6rem; font-size: 2.5rem;
+    color: #fff; cursor: pointer; font-weight: 900;
+  }
+  .empty { color: var(--muted); font-size: 0.9rem; font-weight: normal; letter-spacing: normal; }
+</style>
+</head>
+<body>
+
+  <!-- GATE -->
+  <div id="gate">
+    <div class="seal">★ Classified · Members Only ★</div>
+    <div class="gate-title">Man Weekend</div>
+    <div class="gate-sub">Clearance Required</div>
+    <div class="pw-wrap">
+      <input id="pw" type="password" placeholder="ENTER PASSWORD" autocomplete="off" autofocus />
+      <button id="enter">Enter</button>
+    </div>
+    <div id="err"></div>
+  </div>
+
+  <!-- SITE -->
+  <div id="site">
+    <header class="hero">
+      <div class="hero-title">Man Weekend</div>
+      <div class="hero-sub">The Archive · Est. 2015</div>
+    </header>
+    <nav class="years" id="nav"></nav>
+    <main id="content"></main>
+    <footer>★ What happens at Man Weekend stays at Man Weekend ★</footer>
+  </div>
+
+  <!-- LIGHTBOX -->
+  <div id="lb"><span class="close">&times;</span><img id="lbimg" src="" alt="" /></div>
+
+<script>
+  // ---- Password gate (client-side) ----
+  // Change PASSWORD below to whatever you want.
+  var PASSWORD = "brotherhood";
+
+  var gate = document.getElementById("gate");
+  var site = document.getElementById("site");
+  var pw = document.getElementById("pw");
+  var err = document.getElementById("err");
+
+  function tryEnter() {
+    if (pw.value === PASSWORD) {
+      sessionStorage.setItem("mw_ok", "1");
+      unlock();
+    } else {
+      err.textContent = "Access Denied";
+      gate.classList.remove("shake"); void gate.offsetWidth; gate.classList.add("shake");
+      pw.value = "";
+    }
+  }
+  document.getElementById("enter").addEventListener("click", tryEnter);
+  pw.addEventListener("keydown", function(e){ if(e.key==="Enter") tryEnter(); });
+
+  function unlock() {
+    gate.style.display = "none";
+    site.style.display = "block";
+    if (!window._built) { buildSite(); window._built = true; }
+  }
+  if (sessionStorage.getItem("mw_ok") === "1") { unlock(); }
+
+  // ---- Build chronological archive ----
+  function ytThumb(id){ return "https://i.ytimg.com/vi/"+id+"/hqdefault.jpg"; }
+
+  function buildSite() {
+    fetch("data.json").then(function(r){return r.json();}).then(function(data){
+      var years = Object.keys(data).sort();
+      var nav = document.getElementById("nav");
+      var content = document.getElementById("content");
+
+      years.forEach(function(yr){
+        var a = document.createElement("a");
+        a.href = "#y"+yr; a.textContent = yr; nav.appendChild(a);
+      });
+
+      years.forEach(function(yr){
+        var d = data[yr];
+        var sec = document.createElement("section");
+        sec.className = "year"; sec.id = "y"+yr;
+        var h = '<h2 class="year-head">Man Weekend '+yr+'</h2>';
+
+        // Videos: youtube embeds + local video files
+        var vids = "";
+        (d.youtube||[]).forEach(function(id){
+          vids += '<div class="videobox"><iframe src="https://www.youtube-nocookie.com/embed/'+id+'" title="video" allowfullscreen loading="lazy"></iframe></div>';
+        });
+        (d.videos||[]).forEach(function(fn){
+          vids += '<div class="videobox"><video controls preload="none" src="media/'+fn+'"></video></div>';
+        });
+        if (vids) {
+          h += '<div class="block-label">Footage</div><div class="grid vids">'+vids+'</div>';
+        }
+
+        // Photos
+        if ((d.photos||[]).length) {
+          var ph = "";
+          d.photos.forEach(function(fn){
+            var thumb = "thumbs/"+fn.replace(/\.[^.]+$/, ".jpg");
+            ph += '<div class="photo" data-full="media/'+fn+'"><img src="'+thumb+'" loading="lazy" alt="Man Weekend '+yr+'"></div>';
+          });
+          h += '<div class="block-label">Photos</div><div class="grid">'+ph+'</div>';
+        }
+
+        if (!vids && !(d.photos||[]).length) {
+          h += '<p class="empty">Records sealed.</p>';
+        }
+        sec.innerHTML = h;
+        content.appendChild(sec);
+      });
+
+      // lightbox
+      var lb = document.getElementById("lb");
+      var lbimg = document.getElementById("lbimg");
+      content.addEventListener("click", function(e){
+        var p = e.target.closest(".photo");
+        if (p) { lbimg.src = p.getAttribute("data-full"); lb.style.display = "flex"; }
+      });
+      lb.addEventListener("click", function(){ lb.style.display="none"; lbimg.src=""; });
+    });
+  }
+</script>
+</body>
+</html>
