@@ -1,4 +1,9 @@
 {
+  "2015": {
+    "photos": [],
+    "videos": [],
+    "youtube": []
+  },
   "2016": {
     "photos": [
       "img_0004.jpg"
@@ -43,8 +48,6 @@
   },
   "2020": {
     "photos": [
-      "img_0034.jpg",
-      "img_0041.jpg",
       "img_0043.jpg",
       "img_0044.jpg",
       "img_0045.jpg",
@@ -59,6 +62,11 @@
     "youtube": [
       "b6cncqxenc0"
     ]
+  },
+  "2021": {
+    "photos": [],
+    "videos": [],
+    "youtube": []
   },
   "2022": {
     "photos": [
