@@ -176,17 +176,23 @@
   <div id="lb"><span class="close">&times;</span><img id="lbimg" src="" alt="" /></div>
 
 <script>
-  // ---- Password gate (client-side) ----
-  // Change PASSWORD below to whatever you want.
-  var PASSWORD = "brotherhood";
+  // ---- Password gate (client-side, hashed) ----
+  // Only a SHA-256 hash is stored here. The real password is never in the repo.
+  var PW_HASH = "6046021b6af2720221f396f17afea41456d365f7236668bc2a8a739d2e53aedf";
+
+  async function sha256(str) {
+    var buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(str));
+    return Array.from(new Uint8Array(buf)).map(function(b){return b.toString(16).padStart(2,"0");}).join("");
+  }
 
   var gate = document.getElementById("gate");
   var site = document.getElementById("site");
   var pw = document.getElementById("pw");
   var err = document.getElementById("err");
 
-  function tryEnter() {
-    if (pw.value === PASSWORD) {
+  async function tryEnter() {
+    var h = await sha256(pw.value);
+    if (h === PW_HASH) {
       sessionStorage.setItem("mw_ok", "1");
       unlock();
     } else {
