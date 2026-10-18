@@ -193,9 +193,18 @@
       "img_0110.jpg",
       "img_0111.jpg",
       "img_0200.jpg",
-      "img_0222.jpg"
+      "img_0222.jpg",
+      "img_0220.jpg",
+      "img_0221.jpg",
+      "img_0223.jpg",
+      "img_0224.jpg",
+      "img_0225.jpg",
+      "img_0226.jpg",
+      "img_0227.jpg"
     ],
-    "videos": [],
+    "videos": [
+      "vid_001.mp4"
+    ],
     "youtube": []
   },
   "2025": {
