@@ -178,7 +178,7 @@
 <script>
   // ---- Password gate (client-side, hashed) ----
   // Only a SHA-256 hash is stored here. The real password is never in the repo.
-  var PW_HASH = "6046021b6af2720221f396f17afea41456d365f7236668bc2a8a739d2e53aedf";
+  var PW_HASH = "e7614c6a79f490f38fa6df96e0b1a9793cb02ad47465a707541a3c4bfee9a726";
 
   async function sha256(str) {
     var buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(str));
