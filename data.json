@@ -1,38 +1,19 @@
 {
-  "2015": {
-    "photos": [],
-    "videos": [],
-    "youtube": [
-      "YbYWhdLO43Q",
-      "Me1aWp8MPho"
-    ]
-  },
   "2016": {
     "photos": [
-      "img_0001.jpg",
-      "img_0002.png",
-      "img_0003.png",
       "img_0004.jpg"
     ],
     "videos": [],
-    "youtube": [
-      "NjNn4bbbgSw"
-    ]
+    "youtube": []
   },
   "2017": {
     "photos": [
-      "img_0005.jpg",
-      "img_0006.jpg",
       "img_0007.jpg",
       "img_0008.jpg"
     ],
     "videos": [],
     "youtube": [
-      "KWBETXVGcBY",
-      "9GRTOeO-kOA",
       "TT0QV3LgOXg",
-      "o0cgq03j28A",
-      "lCv4gHkxK-8",
       "iYrF-27TntE",
       "eSF7eHl_FHc",
       "7cCkJQ0_0hE"
@@ -40,28 +21,15 @@
   },
   "2018": {
     "photos": [
-      "img_0009.png",
       "img_0010.jpg"
     ],
     "videos": [],
-    "youtube": [
-      "-UuN08ZqcsM",
-      "UW5W9z5kLP0",
-      "dSEe5pv-st8"
-    ]
+    "youtube": []
   },
   "2019": {
     "photos": [
-      "img_0011.png",
       "img_0012.jpg",
       "img_0013.jpg",
-      "img_0014.png",
-      "img_0015.png",
-      "img_0016.png",
-      "img_0017.png",
-      "img_0018.png",
-      "img_0019.png",
-      "img_0020.png",
       "img_0021.jpg",
       "img_0022.jpg",
       "img_0023.jpg",
@@ -71,20 +39,11 @@
       "img_0027.png"
     ],
     "videos": [],
-    "youtube": [
-      "YQwYNca4iog",
-      "ZhfnLoEOTyk",
-      "WRsEnDl8DUc"
-    ]
+    "youtube": []
   },
   "2020": {
     "photos": [
-      "img_0030.png",
       "img_0034.jpg",
-      "img_0036.jpg",
-      "img_0038.png",
-      "img_0039.png",
-      "img_0040.png",
       "img_0041.jpg",
       "img_0043.jpg",
       "img_0044.jpg",
@@ -92,59 +51,26 @@
       "img_0046.jpg",
       "img_0047.jpg",
       "img_0048.jpg",
-      "img_0049.jpg",
-      "img_0050.png"
+      "img_0049.jpg"
     ],
     "videos": [
-      "img_0028.mov",
-      "img_0029.mp4",
-      "img_0031.mov",
-      "img_0032.mov",
-      "img_0033.mov",
-      "img_0035.mov",
-      "img_0037.mov",
-      "img_0042.mov"
+      "img_0028.mov"
     ],
     "youtube": [
-      "b6cncqxenc0",
-      "MLOkGq9Tm_w",
-      "Ivk_i6eJz-8",
-      "iHQEDa7KV6s",
-      "gFtb3EtjEic",
-      "vzu9wggd7sw",
-      "eFTLKWw542g"
-    ]
-  },
-  "2021": {
-    "photos": [],
-    "videos": [],
-    "youtube": [
-      "vdFb4cUHuIw",
-      "-qEP61yzEqU"
+      "b6cncqxenc0"
     ]
   },
   "2022": {
     "photos": [
       "img_0051.png",
       "img_0052.png",
-      "img_0053.png",
-      "img_0054.png",
-      "img_0055.png",
-      "img_0056.png",
-      "img_0057.jpg",
-      "img_0058.png"
+      "img_0053.png"
     ],
     "videos": [],
-    "youtube": [
-      "EnR956pd3EY",
-      "VstNd17emCQ",
-      "Jwn0ntbZntY"
-    ]
+    "youtube": []
   },
   "2023": {
     "photos": [
-      "img_0059.jpg",
-      "img_0060.jpg",
       "img_0061.png"
     ],
     "videos": [],
@@ -154,8 +80,7 @@
   },
   "2024": {
     "photos": [
-      "img_0062.gif",
-      "img_0063.jpg"
+      "img_0062.gif"
     ],
     "videos": [],
     "youtube": []
