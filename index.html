@@ -87,6 +87,36 @@
     color: var(--muted); letter-spacing: 0.35em; text-transform: uppercase;
     margin-top: 1em; font-size: clamp(0.7rem, 2vw, 1rem); font-weight: bold;
   }
+
+  /* ---------- COUNTDOWN ---------- */
+  .countdown {
+    margin: 2.2em auto 0; max-width: 640px;
+  }
+  .cd-label {
+    color: var(--accent); letter-spacing: 0.3em; text-transform: uppercase;
+    font-size: clamp(0.6rem, 1.8vw, 0.85rem); font-weight: bold; margin-bottom: 1em;
+  }
+  .cd-grid {
+    display: flex; justify-content: center; gap: clamp(0.5rem, 3vw, 1.5rem); flex-wrap: wrap;
+  }
+  .cd-unit {
+    background: var(--card); border: 1px solid #2a2a2a; border-radius: 12px;
+    padding: clamp(0.6rem, 2vw, 1.1rem) clamp(0.7rem, 2.5vw, 1.4rem); min-width: clamp(60px, 18vw, 92px);
+  }
+  .cd-num {
+    font-size: clamp(1.8rem, 7vw, 3.2rem); font-weight: 900; line-height: 1;
+    background: linear-gradient(180deg, #fff 0%, var(--accent) 140%);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    font-variant-numeric: tabular-nums;
+  }
+  .cd-unit .cd-cap {
+    color: var(--muted); letter-spacing: 0.2em; text-transform: uppercase;
+    font-size: clamp(0.55rem, 1.6vw, 0.75rem); font-weight: bold; margin-top: 0.6em;
+  }
+  .cd-live {
+    color: var(--accent); font-size: clamp(1.1rem, 4vw, 1.6rem); font-weight: 900;
+    text-transform: uppercase; letter-spacing: 0.15em;
+  }
   nav.years {
     position: sticky; top: 0; z-index: 50;
     display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center;
@@ -166,6 +196,10 @@
     <header class="hero">
       <div class="hero-title">Man Weekend</div>
       <div class="hero-sub">The Archive · Est. 2015</div>
+      <div class="countdown" id="countdown">
+        <div class="cd-label">⏳ Man Weekend '26 Incoming</div>
+        <div class="cd-grid" id="cd-grid"></div>
+      </div>
     </header>
     <nav class="years" id="nav"></nav>
     <main id="content"></main>
@@ -210,6 +244,30 @@
     if (!window._built) { buildSite(); window._built = true; }
   }
   if (sessionStorage.getItem("mw_ok") === "1") { unlock(); }
+
+  // ---- Countdown to Man Weekend 2026 ----
+  // Placeholder target: Fri Nov 6, 2026, 5:00 PM ET. Update when date is locked.
+  var MW_TARGET = new Date("2026-11-06T17:00:00-05:00").getTime();
+  function tickCountdown(){
+    var grid = document.getElementById("cd-grid");
+    if(!grid) return;
+    var diff = MW_TARGET - Date.now();
+    if(diff <= 0){
+      document.getElementById("countdown").innerHTML =
+        '<div class="cd-live">\uD83C\uDF7B It\u2019s Man Weekend. Go outside. \uD83C\uDF32</div>';
+      return;
+    }
+    var d = Math.floor(diff/86400000);
+    var h = Math.floor(diff%86400000/3600000);
+    var m = Math.floor(diff%3600000/60000);
+    var s = Math.floor(diff%60000/1000);
+    var units = [[d,"Days"],[h,"Hours"],[m,"Mins"],[s,"Secs"]];
+    grid.innerHTML = units.map(function(u){
+      return '<div class="cd-unit"><div class="cd-num">'+String(u[0]).padStart(2,"0")+'</div><div class="cd-cap">'+u[1]+'</div></div>';
+    }).join("");
+  }
+  tickCountdown();
+  setInterval(tickCountdown, 1000);
 
   // ---- Build chronological archive ----
   function ytThumb(id){ return "https://i.ytimg.com/vi/"+id+"/hqdefault.jpg"; }
