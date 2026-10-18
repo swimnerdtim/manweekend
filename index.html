@@ -67,17 +67,29 @@
     position: fixed; inset: 0; z-index: 1500;
     display: flex; flex-direction: column; align-items: center; justify-content: center;
     text-align: center; padding: 6vw;
+    background:
+      radial-gradient(ellipse 80% 70% at 50% 62%, rgba(18,14,9,0.15) 0%, rgba(14,10,6,0.72) 78%, rgba(10,7,4,0.9) 100%),
+      url("hero.jpg") center 42%/cover no-repeat, var(--ink);
   }
-  #gate.paper-bg { background-color: var(--paper); }
+  #gate.paper-bg { }
   .gate-card {
     position: relative;
-    border: 2px solid var(--ink); background: rgba(236,227,207,0.5);
-    padding: clamp(2rem,6vw,4rem) clamp(1.5rem,6vw,4.5rem);
-    max-width: 520px; width: 100%;
-    box-shadow: 6px 8px 0 rgba(28,26,22,0.18);
+    border: 1px solid rgba(28,26,22,0.6);
+    background-color: var(--cream);
+    background-image:
+      radial-gradient(circle at 25% 15%, rgba(0,0,0,0.05) 0%, transparent 42%),
+      radial-gradient(circle at 80% 85%, rgba(0,0,0,0.06) 0%, transparent 46%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='0.4'/%3E%3C/svg%3E");
+    background-blend-mode: multiply;
+    padding: clamp(2.4rem,7vw,4rem) clamp(1.6rem,7vw,4.5rem) clamp(2.4rem,6vw,3.5rem);
+    max-width: 460px; width: 100%;
+    box-shadow:
+      0 2px 0 rgba(255,255,255,0.35) inset,
+      10px 14px 40px rgba(0,0,0,0.55),
+      0 0 0 1px rgba(28,26,22,0.15);
   }
   .gate-card::before {
-    content: ""; position: absolute; inset: 7px; border: 1px solid var(--faded); pointer-events: none;
+    content: ""; position: absolute; inset: 9px; border: 1px solid rgba(28,26,22,0.35); pointer-events: none;
   }
   .stamp {
     position: absolute; top: -18px; right: -14px; transform: rotate(9deg);
@@ -87,17 +99,24 @@
     border-radius: 3px; background: rgba(216,205,180,0.4);
   }
   .seal {
-    font-size: clamp(0.6rem, 2vw, 0.78rem); letter-spacing: 0.4em; color: var(--rust);
-    text-transform: uppercase; margin-bottom: 1.4em; font-weight: 600;
+    font-size: clamp(0.56rem, 1.8vw, 0.72rem); letter-spacing: 0.32em; color: var(--rust);
+    text-transform: uppercase; margin-bottom: 1.1em; font-weight: 600;
+    font-family: "Special Elite", monospace;
   }
   .gate-title {
-    font-size: clamp(3rem, 13vw, 6rem); line-height: 0.82; text-transform: uppercase;
-    color: var(--ink); margin-bottom: 0.1em;
+    font-size: clamp(2.8rem, 12vw, 4.6rem); line-height: 0.86; text-transform: uppercase;
+    color: var(--ink); margin-bottom: 0.2em;
   }
-  .gate-title .amp { display:block; color: var(--rust); font-size: 0.42em; letter-spacing: 0.3em; }
+  .gate-title .amp {
+    display:block; color: var(--rust); font-size: 0.98em; letter-spacing: 0.02em; margin-top: 0.04em;
+  }
+  .gate-divider {
+    width: 56px; height: 3px; background: var(--rust); margin: 0.6em auto 0.9em;
+  }
   .gate-sub {
-    font-size: clamp(0.65rem, 2.2vw, 0.85rem); color: var(--faded);
-    letter-spacing: 0.35em; text-transform: uppercase; margin: 1em 0 2.2em; font-weight: 500;
+    font-size: clamp(0.6rem, 2vw, 0.76rem); color: var(--faded);
+    letter-spacing: 0.32em; text-transform: uppercase; margin: 0 0 2em; font-weight: 500;
+    font-family: "Special Elite", monospace;
   }
   .pw-wrap { display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; }
   #pw {
@@ -129,9 +148,18 @@
   /* masthead — looks like a newspaper/logbook cover */
   header.hero {
     position: relative; text-align: center;
-    padding: clamp(3rem,9vw,6rem) 5vw clamp(2rem,5vw,3rem);
+    padding: clamp(4rem,11vw,8rem) 5vw clamp(3rem,7vw,5rem);
     border-bottom: 4px double var(--ink);
+    background:
+      linear-gradient(rgba(216,205,180,0.0) 0%, rgba(216,205,180,0.15) 55%, rgba(216,205,180,0.92) 100%),
+      linear-gradient(rgba(18,14,9,0.42), rgba(18,14,9,0.42)),
+      url("hero.jpg") center 35%/cover no-repeat, var(--ink);
+    color: var(--cream);
   }
+  header.hero .masthead-top { color: rgba(236,227,207,0.72); border-bottom-color: rgba(236,227,207,0.3); }
+  header.hero .hero-title { color: var(--cream); text-shadow: 0 4px 30px rgba(0,0,0,0.6); }
+  header.hero .hero-rule { color: var(--cream); }
+  header.hero .hero-rule::before, header.hero .hero-rule::after { background: rgba(236,227,207,0.7); }
   .masthead-top {
     display: flex; justify-content: space-between; align-items: center;
     max-width: 1100px; margin: 0 auto 1.5em; font-family: "Special Elite", monospace;
@@ -283,6 +311,7 @@
       <div class="stamp">Restricted</div>
       <div class="seal">Field Logbook · Members Only</div>
       <div class="gate-title anton">Man<span class="amp">Weekend</span></div>
+      <div class="gate-divider"></div>
       <div class="gate-sub">Clearance Required</div>
       <div class="pw-wrap">
         <input id="pw" type="password" placeholder="Enter Password" autocomplete="off" autofocus />
